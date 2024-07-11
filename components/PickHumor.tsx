@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 const PickHumor = () => {
   return (
     <div className="w-full px-6 lg:px-8 py-8 border-b flex flex-col items-center justify-center gap-16">
-      <div className="flex items-center justify-center gap-96">
+      <div className="flex items-center justify-center gap-20 lg:gap-96">
         <div className="flex flex-col gap-2 items-center cursor-pointer">
           <h3 className="text-lg font-bold"> From: </h3>
           <div className="size-20">

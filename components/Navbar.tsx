@@ -13,19 +13,19 @@ const Navbar = () => {
             MOODFlix
         </div>
         <div className="flex items-center">
-            <Button className="bg-transparent text-secondary-foreground px-2 py-1 hover:bg-secondary" asChild>
+            <Button className="bg-transparent text-secondary-foreground px-2 py-0 hover:bg-secondary" asChild>
                 <Link href="https://www.github.com/codesofC">
-                    <Github />
+                    <Github size={20} />
                 </Link>
             </Button>
-            <Button className="bg-transparent text-secondary-foreground px-2 py-1 hover:bg-secondary" asChild>
+            <Button className="bg-transparent text-secondary-foreground px-2 py-0 hover:bg-secondary" asChild>
                 <Link href="https://www.github.com/codesofC">
-                    <Linkedin />
+                    <Linkedin size={20} />
                 </Link>
             </Button>
-            <Button className="bg-transparent text-secondary-foreground px-2 py-1 hover:bg-secondary">
-                {theme === "light" ? <Moon onClick={() => setTheme("dark")} /> : 
-                <Sun onClick={() => setTheme("light")} />}
+            <Button className="bg-transparent text-secondary-foreground px-2 py-0 hover:bg-secondary">
+                {theme === "light" ? <Moon onClick={() => setTheme("dark")} size={20} /> : 
+                <Sun onClick={() => setTheme("light")} size={20} />}
             </Button>
         </div>
     </nav>
