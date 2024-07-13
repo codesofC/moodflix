@@ -1,9 +1,9 @@
-import Image from "next/image";
-import { Button } from "./ui/button";
-import MoodButton from "./PickMood/MoodButton";
-import { useState } from "react";
 
-const PickHumor = () => {
+import { useState } from "react";
+import { Button } from "../ui/button";
+import MoodButton from "./MoodButton";
+
+const PickMood = () => {
 
   const [actualMood, setActualMood] = useState()
   const [achieveMood, setAchieveMood] = useState()
@@ -35,4 +35,4 @@ const PickHumor = () => {
   );
 };
 
-export default PickHumor;
+export default PickMood;

@@ -15,7 +15,7 @@ const MoodButton = (props: { url: string; title: string }) => {
             className="w-full object-contain"
           />
         </div>
-        <h4 className="text-sm font-semibold"> {props.title} </h4>
+        <h4 className="text-sm font-semibold text-secondary-foreground"> {props.title} </h4>
       </PopoverTrigger>
       <PopOverMood />
     </Popover>

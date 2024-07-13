@@ -2,20 +2,29 @@
 
 import MovieCard from "@/components/MovieCard";
 import Navbar from "@/components/Navbar";
-import PickHumor from "@/components/PickHumor";
 import { useTheme } from "@/context/theme/useTheme";
 import { cn } from "@/lib/utils";
-import Modal from "@/components/Modal";
-import { Credenza, CredenzaTrigger } from "@/components/ui/credenza";
+import PickMood from "@/components/PickMood";
+import { useEffect } from "react";
+import  generateListItems  from "./action";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
 
   const {theme} = useTheme()
 
+  
+  const fecth = async () => {
+    const data = await generateListItems()
+
+    console.log(data);
+  }
+  
   return (
     <main className={cn(theme, "bg-background min-h-screen")}>
       <Navbar />
-      <PickHumor />
+      {/* <Button onClick={fecth}> Call </Button> */}
+      <PickMood />
       <div className="w-full px-6 lg:px-32 py-4 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-center gap-6">
         
         <MovieCard url="https://musicart.xboxlive.com/7/78985000-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" />
