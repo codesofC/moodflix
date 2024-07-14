@@ -1,23 +1,34 @@
 import Image from "next/image";
 import { Popover, PopoverTrigger } from "../ui/popover";
 import PopOverMood from "./PopOverMood";
+import { ButtonMoodPros, MoodProps } from "@/types";
+import { useState } from "react";
 
-const MoodButton = (props: { url: string; title: string }) => {
+const MoodButton = (props: ButtonMoodPros) => {
+
+  const [openPopOver, setOpenPopOver] = useState(false)
+  const { item, handleMood } = props
+
+  const handleStateFn = (newMood: MoodProps) => {
+    handleMood(newMood)
+    setOpenPopOver(prev => !prev)
+  }
+
   return (
-    <Popover>
-      <PopoverTrigger className="flex flex-col gap-1 items-center">
+    <Popover open={openPopOver} onOpenChange={setOpenPopOver}>
+      <PopoverTrigger className="flex flex-col items-center">
         <div className="size-20">
           <Image
-            src={props.url}
-            alt={props.title}
+            src={item.url}
+            alt={item.title}
             width={120}
             height={120}
             className="w-full object-contain"
           />
         </div>
-        <h4 className="text-sm font-semibold text-secondary-foreground"> {props.title} </h4>
+        <h4 className="text-sm font-semibold text-white"> {item.title} </h4>
       </PopoverTrigger>
-      <PopOverMood />
+      <PopOverMood handleMood={handleStateFn} />
     </Popover>
   );
 };

@@ -17,6 +17,9 @@ import { Button } from "./ui/button";
 const Modal = () => {
   return (
     <CredenzaContent className="bg-background border border-background">
+      <CredenzaHeader>
+        <CredenzaTitle>Details</CredenzaTitle>
+      </CredenzaHeader>
       <CredenzaBody className="flex flex-col gap-4">
         <div className="relative w-full max-h-[300px] overflow-hidden">
           <Image

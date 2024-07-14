@@ -1,18 +1,15 @@
-"use server";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateText, streamText } from "ai";
 
 
-export default async function generateListItems() {
-
-
+export const generateListItems = async () => {
     const google = createGoogleGenerativeAI({
         apiKey: process.env.NEXT_GOOGLE_AI_API_KEY
     });
 
-    const result = await streamText({
-        model: google("models/gemini-1.5-flash-latest"),
-        prompt: 'Return a json array with 5 object with "title" key where title represent the name of a movie or serie you recommended.',
+    const result = await generateText({
+        model: google("models/gemini-1.5-pro-latest"),
+        prompt: 'Tell me a joke.',
     });
 
     return result.text
