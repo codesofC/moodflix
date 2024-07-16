@@ -17,13 +17,14 @@ export interface CardItemProps {
     uid: string,
     title: string,
     synopsis: string,
-    thumbnail: string,
+    poster: string,
     trailer: string,
-    starring: string [],
+    starring: string,
     director: string,
     platforms: {
         name: string,
-        logo: string,
+        logo?: string,
         link: string
-    } []
+    } [],
+    rating: number
 }

@@ -13,77 +13,90 @@ import { Star } from "lucide-react";
 import Image from "next/image";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
+import { CardItemProps } from "@/types";
+import Link from "next/link";
 
-const Modal = () => {
+const Modal = (props: CardItemProps) => {
+  const {
+    platforms,
+    synopsis,
+    poster,
+    title,
+    rating,
+    director,
+    starring,
+    trailer,
+  } = props;
+
   return (
     <CredenzaContent className="bg-background border border-background">
       <CredenzaHeader>
         <CredenzaTitle>Details</CredenzaTitle>
       </CredenzaHeader>
-      <CredenzaBody className="flex flex-col gap-4">
+      <CredenzaBody className="flex flex-col gap-6">
         <div className="relative w-full max-h-[300px] overflow-hidden">
           <Image
-            src="https://musicart.xboxlive.com/7/78985000-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080"
+            src={poster}
             alt="title"
             width={500}
             height={500}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
-        <div className="w-full flex justify-between gap-2">
-          <div className="max-w-[80%] flex flex-col gap-1">
-            <span className="flex flex-wrap"> Lords of rings </span>
-            <span> 2h:22mn </span>
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-6">
+            <div className="w-full flex justify-between gap-4">
+              <div className="max-w-[80%] flex items-center gap-1">
+                <span className="flex flex-wrap"> {title} | </span>
+                <span className="text-xs"> 2h:22mn </span>
+              </div>
+              <div className="flex flex-wrap text-sm">
+                Drame, Action, etc...
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="text-sm text-secondary-foreground/80">
+                <h3 className="text-sm font-bold"> Synopsis </h3>
+                <p className="font-normal text-justify">{synopsis}</p>
+              </div>
+              <div>
+                <div className="flex gap-1 text-sm">
+                  <span className="font-semibold">Starring: </span>
+                  <span> {starring} </span>
+                </div>
+                <div className="flex gap-1 text-sm">
+                  <span className="font-semibold">Director: </span>
+                  <span> {director} </span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>Drame, Action, etc...</div>
-        </div>
-        <div className="text-sm text-secondary-foreground/80">
-          <h3 className="text-sm font-bold"> Synopsis </h3>
-          <p className="font-normal">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam harum
-            tenetur laudantium quisquam praesentium deleniti dolores ullam...
-          </p>
-        </div>
-        <div className="flex flex-col gap-2">
-          <h3 className="text-sm font-bold"> Platforms availables </h3>
-          <div className="flex items-center gap-2">
-            <div className="size-6 rounded-full overflow-hidden">
-              <Image
-                src="https://static.vecteezy.com/system/resources/previews/017/396/804/non_2x/netflix-mobile-application-logo-free-png.png"
-                alt="platforme"
-                width={120}
-                height={120}
-                className="w-full object-cover aspect-square"
-              />
+          <div className="flex items-center justify-between gap-6">
+            <div className="flex flex-col gap-2">
+              <h3 className="text-sm font-bold"> Platforms availables </h3>
+              <div className="flex items-center gap-2">
+                  {platforms.map((item, index) => (
+                    <Link href={item.link} key={index} className="size-10 overflow-hidden">
+                      <Image
+                        src="https://1000logos.net/wp-content/uploads/2022/10/Amazon-Prime-Video-Icon.png"
+                        alt="platforme"
+                        width={120}
+                        height={120}
+                        className="w-full object-cover aspect-square"
+                      />
+                    </Link>
+                  ))}
             </div>
-            <div className="size-6 rounded-full overflow-hidden">
-              <Image
-                src="https://1000logos.net/wp-content/uploads/2022/10/Amazon-Prime-Video-Icon.png"
-                alt="platforme"
-                width={120}
-                height={120}
-                className="w-full object-cover aspect-square"
-              />
             </div>
-            <div className="size-6 rounded-full overflow-hidden">
-              <Image
-                src="https://i.pinimg.com/736x/dc/5f/ee/dc5fee0189b193c8ebf8e19076ad56f0.jpg"
-                alt="platforme"
-                width={120}
-                height={120}
-                className="w-full object-cover aspect-square"
-              />
+            <div className="flex items-center gap-1">
+              <Star strokeWidth={1} fill="yellow" />
+              <span className="font-bold"> {rating} </span>
             </div>
           </div>
         </div>
       </CredenzaBody>
-      <CredenzaFooter>
-        <CredenzaClose asChild>
-          <Button> Close </Button>
-        </CredenzaClose>
-      </CredenzaFooter>
     </CredenzaContent>
-  );
+  )
 };
 
 export default Modal;

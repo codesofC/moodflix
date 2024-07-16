@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const CardItem = (props: CardItemProps) => {
 
-  const {director, platforms, starring, synopsis, thumbnail, title, trailer, uid} = props;
+  const {platforms, synopsis, poster, title, rating} = props;
 
   return (
     <Credenza>
@@ -18,7 +18,7 @@ const CardItem = (props: CardItemProps) => {
         <Card className="cursor-pointer shadow-lg overflow-hidden">
           <div className="relative w-full h-[20vh] overflow-hidden">
             <Image
-              src={thumbnail}
+              src={poster}
               alt="title"
               width={1200}
               height={1200}
@@ -40,7 +40,7 @@ const CardItem = (props: CardItemProps) => {
                 {platforms.map((platform, index) => (
                   <Link target="_blank" href={platform.link} key={index} className="size-6 rounded-full overflow-hidden border">
                     <Image
-                    src={platform.logo}
+                    src={platform.logo || ""}
                     alt={platform.name}
                     title={platform.name}
                     width={120}
@@ -53,13 +53,13 @@ const CardItem = (props: CardItemProps) => {
               </div>
               <span className="flex gap-1 items-center">
                 <Star strokeWidth={1} fill="yellow" />
-                4.5
+                {rating}
               </span>
             </div>
           </div>
         </Card>
       </CredenzaTrigger>
-      <Modal />
+      <Modal {...props} />
     </Credenza>
   );
 };
