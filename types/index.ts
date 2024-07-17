@@ -1,9 +1,7 @@
 
 export interface ThemeContextProps{
     theme: "light" | "dark"
-    setTheme: React.Dispatch<React.SetStateAction<"light" | "dark">>,
-    isLoading: boolean,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setTheme: React.Dispatch<React.SetStateAction<"light" | "dark">>
 }
 
 export interface MoodProps{
@@ -29,7 +27,8 @@ export interface CardItemProps {
     } [],
     rating: number,
     genre: string,
-    type: string
+    type: string,
+    year: string
 }
 
 export interface MoodsFetchingProps{
@@ -37,9 +36,9 @@ export interface MoodsFetchingProps{
     to: string
 }
 
-export interface MoodsContextProps{
-    actualMood: MoodProps,
-    setActualMood: React.Dispatch<React.SetStateAction<MoodProps>>,
-    achieveMood: MoodProps,
-    setAchieveMood: React.Dispatch<React.SetStateAction<MoodProps>>
+export interface GlobalContextProps{
+    isLoading: boolean,
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    allShows: CardItemProps[]
+    setAllShows: React.Dispatch<React.SetStateAction<CardItemProps[]>>
 }

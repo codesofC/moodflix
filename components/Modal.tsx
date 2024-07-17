@@ -1,18 +1,11 @@
 import {
-  Credenza,
   CredenzaBody,
-  CredenzaClose,
   CredenzaContent,
-  CredenzaDescription,
-  CredenzaFooter,
   CredenzaHeader,
   CredenzaTitle,
-  CredenzaTrigger,
 } from "@/components/ui/credenza";
 import { Play, Star, Youtube } from "lucide-react";
 import Image from "next/image";
-import { Card } from "./ui/card";
-import { Button } from "./ui/button";
 import { CardItemProps } from "@/types";
 import Link from "next/link";
 import { getPlatformLogo } from "@/constant";
@@ -29,7 +22,8 @@ const Modal = (props: CardItemProps) => {
     starring,
     trailer,
     genre,
-    type
+    type,
+    year
   } = props;
 
   const { theme } = useTheme();
@@ -46,7 +40,7 @@ const Modal = (props: CardItemProps) => {
         <CredenzaTitle>Details</CredenzaTitle>
       </CredenzaHeader>
       <CredenzaBody className="relative flex flex-col gap-6">
-        <div className="relative w-full max-h-[350px] overflow-hidden rounded-md">
+        <div className="relative w-full max-h-[350px] flex items-center justify-center overflow-hidden rounded-md">
           <Image
             src={poster}
             alt={title}
@@ -75,6 +69,10 @@ const Modal = (props: CardItemProps) => {
                 <div className="text-sm">
                   <h3 className="text-sm font-bold"> Synopsis </h3>
                   <p className="font-normal text-justify">{synopsis}</p>
+                </div>
+                <div className="text-sm flex gap-2">
+                  <h3 className="text-sm font-bold"> Year: </h3>
+                  <p className="font-normal text-justify">{year}</p>
                 </div>
                 <div className="text-sm flex gap-2">
                   <h3 className="text-sm font-bold"> Gender: </h3>
@@ -110,7 +108,7 @@ const Modal = (props: CardItemProps) => {
                         alt="platforme"
                         width={120}
                         height={120}
-                        className="size-10  object-contain aspect-square"
+                        className="size-10 rounded-md object-contain aspect-square"
                       />
                     ) : (
                       <span className="bg-primary text-primary-foreground text-sm py-2 px-4">

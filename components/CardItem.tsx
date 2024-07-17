@@ -46,7 +46,7 @@ const CardItem = (props: CardItemProps) => {
                         alt="platforme"
                         width={120}
                         height={120}
-                        className="size-8 object-contain"
+                        className="size-8 object-contain rounded-md"
                       />
                       ) : (
                         <span className="bg-primary text-primary-foreground text-sm py-2 px-4"> {item.name} </span>

@@ -4,8 +4,9 @@ import MoodButton from "./MoodButton";
 import { MoodProps } from "@/types";
 import { ALLMOODS } from "@/constant";
 import Image from "next/image";
-import { useTheme } from "@/context/theme/useTheme";
-import { generateListItems } from "@/app/action";
+import { generateListItems, getShow } from "@/app/action";
+import { useGlobalContext } from "@/context/globalContext/useGlobalContext";
+import { nanoid } from "nanoid";
 
 const PickMood = () => {
   const [actualMood, setActualMood] = useState<MoodProps>(ALLMOODS[0]);
@@ -13,12 +14,13 @@ const PickMood = () => {
     ALLMOODS[ALLMOODS.length - 1]
   );
 
-  const {setIsLoading} = useTheme()
+  const {setIsLoading, setAllShows} = useGlobalContext()
 
-  const fecth = async () => {
+  const fecthDatasMoods = async () => {
     try {
+      setAllShows([])
       setIsLoading(true)
-      const res = await generateListItems()
+      const res = await generateListItems({from: actualMood.title, to: achieveMood.title})
       res.results.forEach(async (item) => {
         const response = await getShow(item.title);
         setAllShows(prev => ([
@@ -34,7 +36,8 @@ const PickMood = () => {
             rating: item.rating,
             genre: response.Genre,
             type: response.Type,
-            uid: uuidv4()
+            year: response.Year,
+            uid: nanoid()
           }
         ]))
       });
@@ -68,7 +71,7 @@ const PickMood = () => {
           </div>
         </div>
 
-        <Button className="text-xl py-6 px-12 rounded-full">Search</Button>
+        <Button className="text-xl py-6 px-12 rounded-full" onClick={fecthDatasMoods}>Search</Button>
       </div>
     </div>
   );

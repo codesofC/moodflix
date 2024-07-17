@@ -23,8 +23,8 @@ export const generateListItems = async (moods: MoodsFetchingProps) => {
         model: google("models/gemini-1.5-pro-latest", {
             
         }),
-        system: "You are an AI assistant expert in recommending TV shows such as films, series, animated, documentary, reality TV. Your job is to make 5 recommandations of what to watch to the user based on their current mood and the mood he wants to reach after watch. You must do an analysis of the moods described by the user to make a recommendation that is as personalized as possible. For this, you will receive from the user the following data: current mood, mood to achieve.",
-        prompt: "current mood: Sad; mood to achieve: happy",
+        system: "You are a expert in recommending TV shows such as movies, series, animes, documentary, reality TV. Your job is to make 5 recommandations of what to watch to the user based on their current mood and the mood he wants to reach after watch. You must do an analysis of the moods described by the user to make a recommendation that is as personalized as possible. For this, you will receive from the user the following data: current mood, mood to achieve.",
+        prompt: `Make 5 recommandation for a current mood: ${moods.from}; mood to achieve: ${moods.to}`,
         schema: z.object({
             results: z.array(obj).describe("Array with movie objects"),
           })

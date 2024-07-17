@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/context/theme/ThemeProvider";
 import { cn } from "@/lib/utils";
+import GloabalContextProvider from "@/context/globalContext/GlobalContextProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +17,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
   return (
     <html lang="en">
+      <body className={cn(inter.className)}>
       <ThemeProvider>
-        <body className={cn(inter.className)}>{children}</body>
+        <GloabalContextProvider>
+          {children}
+        </GloabalContextProvider>
       </ThemeProvider>
+      </body>
     </html>
   );
 }

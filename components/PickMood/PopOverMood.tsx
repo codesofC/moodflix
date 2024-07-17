@@ -7,10 +7,10 @@ const PopOverMood = ({ handleMood }: { handleMood: (mood: MoodProps) => void}) =
 
 
   return (
-    <PopoverContent className='grid grid-cols-3'>
+    <PopoverContent className='grid grid-cols-3 md:grid-cols-4 w-auto'>
         {
           ALLMOODS.map(mood => (
-            <div key={mood.title} className='p-2 px-4 text-secondary-foreground hover:bg-primary hover:text-white cursor-pointer flex flex-col items-center rounded-md' 
+            <div key={mood.title} className='py-1 px-2 text-secondary-foreground hover:bg-primary hover:text-white cursor-pointer flex flex-col items-center rounded-md' 
               onClick={() => handleMood(mood)}
             >
               <Image 

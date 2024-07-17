@@ -7,10 +7,9 @@ import { ThemeContext } from "./useTheme"
 const ThemeProvider = ({children}:{children: React.ReactNode}) => {
 
     const [theme, setTheme] = useState<"light" | "dark">("light")
-    const [isLoading, setIsLoading] = useState(false)
 
   return (
-    <ThemeContext.Provider value={{theme, setTheme, isLoading, setIsLoading}}>
+    <ThemeContext.Provider value={{theme, setTheme}}>
         {children}
     </ThemeContext.Provider>
   )
