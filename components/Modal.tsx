@@ -9,12 +9,14 @@ import {
   CredenzaTitle,
   CredenzaTrigger,
 } from "@/components/ui/credenza";
-import { Star } from "lucide-react";
+import { Play, Star, Youtube } from "lucide-react";
 import Image from "next/image";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { CardItemProps } from "@/types";
 import Link from "next/link";
+import { getPlatformLogo } from "@/constant";
+import { useTheme } from "@/context/theme/useTheme";
 
 const Modal = (props: CardItemProps) => {
   const {
@@ -26,21 +28,31 @@ const Modal = (props: CardItemProps) => {
     director,
     starring,
     trailer,
+    genre,
+    type
   } = props;
 
+  const { theme } = useTheme();
+
   return (
-    <CredenzaContent className="bg-background border border-background">
+    <CredenzaContent
+      className={`${
+        theme === "dark"
+          ? "bg-foreground text-white border border-foreground"
+          : "bg-background"
+      }`}
+    >
       <CredenzaHeader>
         <CredenzaTitle>Details</CredenzaTitle>
       </CredenzaHeader>
-      <CredenzaBody className="flex flex-col gap-6">
-        <div className="relative w-full max-h-[300px] overflow-hidden">
+      <CredenzaBody className="relative flex flex-col gap-6">
+        <div className="relative w-full max-h-[350px] overflow-hidden rounded-md">
           <Image
             src={poster}
-            alt="title"
-            width={500}
-            height={500}
-            className="w-full h-full object-contain"
+            alt={title}
+            width={1400}
+            height={800}
+            className="w-full h-full object-cover"
           />
         </div>
         <div className="flex flex-col gap-12">
@@ -48,16 +60,26 @@ const Modal = (props: CardItemProps) => {
             <div className="w-full flex justify-between gap-4">
               <div className="max-w-[80%] flex items-center gap-1">
                 <span className="flex flex-wrap"> {title} | </span>
-                <span className="text-xs"> 2h:22mn </span>
+                <span className="text-xs"> {type} </span>
               </div>
-              <div className="flex flex-wrap text-sm">
-                Drame, Action, etc...
-              </div>
+              <Link
+                href={trailer}
+                target="_blank"
+                className="flex flex-wrap text-sm bg-primary text-white py-2 px-4 rounded-md"
+              >
+                <Youtube />
+              </Link>
             </div>
             <div className="flex flex-col gap-4">
-              <div className="text-sm text-secondary-foreground/80">
-                <h3 className="text-sm font-bold"> Synopsis </h3>
-                <p className="font-normal text-justify">{synopsis}</p>
+              <div className="space-y-2">
+                <div className="text-sm">
+                  <h3 className="text-sm font-bold"> Synopsis </h3>
+                  <p className="font-normal text-justify">{synopsis}</p>
+                </div>
+                <div className="text-sm flex gap-2">
+                  <h3 className="text-sm font-bold"> Gender: </h3>
+                  <p className="font-normal text-justify">{genre}</p>
+                </div>
               </div>
               <div>
                 <div className="flex gap-1 text-sm">
@@ -75,18 +97,30 @@ const Modal = (props: CardItemProps) => {
             <div className="flex flex-col gap-2">
               <h3 className="text-sm font-bold"> Platforms availables </h3>
               <div className="flex items-center gap-2">
-                  {platforms.map((item, index) => (
-                    <Link href={item.link} key={index} className="size-10 overflow-hidden">
+                {platforms.map((item, index) => (
+                  <Link
+                    href={item.link}
+                    target="_blank"
+                    key={index}
+                    className="overflow-hidden"
+                  >
+                    {getPlatformLogo(item.name) ? (
                       <Image
-                        src="https://1000logos.net/wp-content/uploads/2022/10/Amazon-Prime-Video-Icon.png"
+                        src={getPlatformLogo(item.name) || ""}
                         alt="platforme"
                         width={120}
                         height={120}
-                        className="w-full object-cover aspect-square"
+                        className="size-10  object-contain aspect-square"
                       />
-                    </Link>
-                  ))}
-            </div>
+                    ) : (
+                      <span className="bg-primary text-primary-foreground text-sm py-2 px-4">
+                        {" "}
+                        {item.name}{" "}
+                      </span>
+                    )}
+                  </Link>
+                ))}
+              </div>
             </div>
             <div className="flex items-center gap-1">
               <Star strokeWidth={1} fill="yellow" />
@@ -96,7 +130,7 @@ const Modal = (props: CardItemProps) => {
         </div>
       </CredenzaBody>
     </CredenzaContent>
-  )
+  );
 };
 
 export default Modal;

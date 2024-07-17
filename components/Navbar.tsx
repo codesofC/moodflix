@@ -8,7 +8,7 @@ const Navbar = () => {
     const {theme, setTheme} = useTheme()
 
   return (
-    <nav className="w-full flex items-center justify-between px-6 lg:px-8 py-4 border-b">
+    <nav className="w-full flex items-center justify-between px-6 lg:px-8 py-2 border-b">
         <div className="text-2xl font-extrabold text-primary">
             MOODFlix
         </div>

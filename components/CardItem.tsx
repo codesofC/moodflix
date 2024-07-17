@@ -7,6 +7,7 @@ import { Credenza, CredenzaTrigger } from "./ui/credenza";
 import Modal from "./Modal";
 import { CardItemProps } from "@/types";
 import Link from "next/link";
+import { getPlatformLogo } from "@/constant";
 
 const CardItem = (props: CardItemProps) => {
 
@@ -37,18 +38,21 @@ const CardItem = (props: CardItemProps) => {
             </div>
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                {platforms.map((platform, index) => (
-                  <Link target="_blank" href={platform.link} key={index} className="size-6 rounded-full overflow-hidden border">
-                    <Image
-                    src={platform.logo || ""}
-                    alt={platform.name}
-                    title={platform.name}
-                    width={120}
-                    height={120}
-                    className="w-full object-contain aspect-square"
-                  />
-                  </Link>
-                ))}
+              {platforms.map((item, index) => (
+                    <Link href={item.link} target="_blank" key={index} className="overflow-hidden">
+                      {getPlatformLogo(item.name) ? (
+                        <Image
+                        src={getPlatformLogo(item.name) || ""}
+                        alt="platforme"
+                        width={120}
+                        height={120}
+                        className="size-8 object-contain"
+                      />
+                      ) : (
+                        <span className="bg-primary text-primary-foreground text-sm py-2 px-4"> {item.name} </span>
+                      )}
+                    </Link>
+                  ))}
                 
               </div>
               <span className="flex gap-1 items-center">

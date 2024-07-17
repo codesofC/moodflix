@@ -4,12 +4,47 @@ import MoodButton from "./MoodButton";
 import { MoodProps } from "@/types";
 import { ALLMOODS } from "@/constant";
 import Image from "next/image";
+import { useTheme } from "@/context/theme/useTheme";
+import { generateListItems } from "@/app/action";
 
 const PickMood = () => {
   const [actualMood, setActualMood] = useState<MoodProps>(ALLMOODS[0]);
   const [achieveMood, setAchieveMood] = useState<MoodProps>(
     ALLMOODS[ALLMOODS.length - 1]
   );
+
+  const {setIsLoading} = useTheme()
+
+  const fecth = async () => {
+    try {
+      setIsLoading(true)
+      const res = await generateListItems()
+      res.results.forEach(async (item) => {
+        const response = await getShow(item.title);
+        setAllShows(prev => ([
+          ...prev, 
+          {
+            title: item.title,
+            trailer: item.trailer,
+            synopsis: response.Plot,
+            poster: response.Poster,
+            director: response.Director,
+            starring: response.Actors,
+            platforms: item.platforms,
+            rating: item.rating,
+            genre: response.Genre,
+            type: response.Type,
+            uid: uuidv4()
+          }
+        ]))
+      });
+    } catch (error) {
+      console.log("Error AI generating: ", error);
+    }finally{
+      setIsLoading(false)
+    }
+  }
+
 
   return (
     <div className="relative w-full lg:w-4/5 xl:w-3/5 h-[40vh] mx-auto rounded-bl-lg rounded-br-lg overflow-hidden">
