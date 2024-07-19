@@ -1,4 +1,5 @@
-<img style="display: block; margin-left: auto; margin-right: auto; width: 60%;" src="https://github.com/user-attachments/assets/1a71cf72-ba5b-4c87-b5bc-8b2997cc2d5f" alt="Image">
+
+![moodflix-logo](https://github.com/user-attachments/assets/61487841-c602-4d97-b99b-0aa5916342e4)
 
 <h1 style="text-align: center;"> Moodflix - TV show recommendation based on your mood </h1>
 
