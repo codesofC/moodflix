@@ -5,7 +5,6 @@ import { MoodProps } from '@/types'
 
 const PopOverMood = ({ handleMood }: { handleMood: (mood: MoodProps) => void}) => {
 
-
   return (
     <PopoverContent className='grid grid-cols-3 md:grid-cols-4 w-[70%] md:w-auto overflow-y-auto'>
         {
