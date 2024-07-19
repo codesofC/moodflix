@@ -76,7 +76,7 @@ export const ALLMOODS = [
 ]
 
 export const getPlatformLogo = (name: string) => {
-    const url = name.toLowerCase() === "netflix" ? "https://static.vecteezy.com/system/resources/previews/017/396/804/non_2x/netflix-mobile-application-logo-free-png.png" : (name.toLowerCase() === "amazon prime video" ? "https://1000logos.net/wp-content/uploads/2022/10/Amazon-Prime-Video-Icon.png" : ((name.toLowerCase() === "disney+" || name.toLowerCase() === "disney plus") ? "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/800px-Disney%2B_logo.svg.png" : (name.toLowerCase() === "hulu" ? "https://download.logo.wine/logo/Hulu/Hulu-Logo.wine.png" : (name.toLowerCase() === "hbo max" ? "https://i.pinimg.com/originals/8b/02/00/8b020050690f955ccb306cdf51324aea.png" : null))))
+    const url = name.toLowerCase() === "netflix" ? "https://static.vecteezy.com/system/resources/previews/017/396/804/non_2x/netflix-mobile-application-logo-free-png.png" : ((name.toLowerCase() === "amazon prime video" || name.toLowerCase() === "amazon prime" || name.toLowerCase() === "prime video"  )? "https://1000logos.net/wp-content/uploads/2022/10/Amazon-Prime-Video-Icon.png" : ((name.toLowerCase() === "disney+" || name.toLowerCase() === "disney plus") ? "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/800px-Disney%2B_logo.svg.png" : (name.toLowerCase() === "hulu" ? "https://download.logo.wine/logo/Hulu/Hulu-Logo.wine.png" : (name.toLowerCase() === "hbo max" ? "https://i.pinimg.com/originals/8b/02/00/8b020050690f955ccb306cdf51324aea.png" : null))))
 
     return url
 }

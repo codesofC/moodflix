@@ -8,6 +8,7 @@ import Modal from "./Modal";
 import { CardItemProps } from "@/types";
 import Link from "next/link";
 import { getPlatformLogo } from "@/constant";
+import { motion } from "framer-motion";
 
 const CardItem = (props: CardItemProps) => {
 
@@ -27,11 +28,8 @@ const CardItem = (props: CardItemProps) => {
             />
           </div>
           <div className="w-full flex flex-col gap-2 p-4">
-            <div className="flex items-center justify-between">
-              <span className="max-w-[80% line-clamp-1">
-                {" "}
+            <div className="flex line-clamp-1">
                 {title}{" "}
-              </span>
             </div>
             <div className="text-sm text-secondary-foreground/80 line-clamp-3">
               {synopsis}

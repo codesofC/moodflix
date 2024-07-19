@@ -40,5 +40,7 @@ export interface GlobalContextProps{
     isLoading: boolean,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
     allShows: CardItemProps[]
-    setAllShows: React.Dispatch<React.SetStateAction<CardItemProps[]>>
+    setAllShows: React.Dispatch<React.SetStateAction<CardItemProps[]>>,
+    error: string,
+    setError: React.Dispatch<React.SetStateAction<string>>
 }

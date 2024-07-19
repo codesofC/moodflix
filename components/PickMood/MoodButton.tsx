@@ -17,7 +17,7 @@ const MoodButton = (props: ButtonMoodPros) => {
   return (
     <Popover open={openPopOver} onOpenChange={setOpenPopOver}>
       <PopoverTrigger className="flex flex-col items-center">
-        <div className="size-20">
+        <div className="size-12 sm:size-16 md::size-20">
           <Image
             src={item.url}
             alt={item.title}

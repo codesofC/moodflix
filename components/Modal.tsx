@@ -40,13 +40,13 @@ const Modal = (props: CardItemProps) => {
         <CredenzaTitle>Details</CredenzaTitle>
       </CredenzaHeader>
       <CredenzaBody className="relative flex flex-col gap-6">
-        <div className="relative w-full max-h-[350px] flex items-center justify-center overflow-hidden rounded-md">
+        <div className="relative w-full max-h-[300px] flex items-center justify-center overflow-hidden rounded-md">
           <Image
             src={poster}
             alt={title}
             width={1400}
             height={800}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
         <div className="flex flex-col gap-12">
@@ -59,8 +59,9 @@ const Modal = (props: CardItemProps) => {
               <Link
                 href={trailer}
                 target="_blank"
-                className="flex flex-wrap text-sm bg-primary text-white py-2 px-4 rounded-md"
+                className="flex items-center flex-wrap text-sm bg-primary text-white py-2 px-4 rounded-md gap-1"
               >
+                <span>Trailer</span>
                 <Youtube />
               </Link>
             </div>
