@@ -30,7 +30,7 @@ const Modal = (props: CardItemProps) => {
 
   return (
     <CredenzaContent
-      className={`${
+      className={`pb-6 ${
         theme === "dark"
           ? "bg-foreground text-white border border-foreground"
           : "bg-background"
@@ -40,20 +40,23 @@ const Modal = (props: CardItemProps) => {
         <CredenzaTitle>Details</CredenzaTitle>
       </CredenzaHeader>
       <CredenzaBody className="relative flex flex-col gap-6">
-        <div className="relative w-full max-h-[300px] flex items-center justify-center overflow-hidden rounded-md">
+        <div className="relative w-full max-h-[300px] flex items-center justify-center overflow-hidden rounded-md p-6">
+          <div className="inset-0 absolute bg-cover bg-center" style={{backgroundImage: `url(${poster})`}} />
+          <div className="absolute inset-0 backdrop-blur-[10px]" />
           <Image
             src={poster}
             alt={title}
             width={1400}
             height={800}
-            className="w-full h-full object-contain"
+            className="w-2/5 md:w-full h-full object-contain z-10"
           />
         </div>
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-6">
             <div className="w-full flex justify-between gap-4">
-              <div className="max-w-[80%] flex items-center gap-1">
-                <span className="flex flex-wrap"> {title} | </span>
+              <div className="max-w-[70%] flex items-center gap-1">
+                <span className="flex flex-wrap"> {title} </span> 
+                <div className="w-[2px] h-6 bg-secondary" />
                 <span className="text-xs"> {type} </span>
               </div>
               <Link
@@ -67,7 +70,7 @@ const Modal = (props: CardItemProps) => {
             </div>
             <div className="flex flex-col gap-4">
               <div className="space-y-2">
-                <div className="text-sm">
+                <div className="text-sm space-y-1">
                   <h3 className="text-sm font-bold"> Synopsis </h3>
                   <p className="font-normal text-justify">{synopsis}</p>
                 </div>

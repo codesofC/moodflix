@@ -28,9 +28,9 @@ const CardItem = (props: CardItemProps) => {
             />
           </div>
           <div className="w-full flex flex-col gap-2 p-4">
-            <div className="flex line-clamp-1">
-                {title}{" "}
-            </div>
+            <h3 className="w-full text-md font-semibold line-clamp-1">
+                {title}
+            </h3>
             <div className="text-sm text-secondary-foreground/80 line-clamp-3">
               {synopsis}
             </div>

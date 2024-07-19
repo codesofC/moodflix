@@ -30,7 +30,7 @@ export default function Home() {
                 hidden: {},
                 show: {
                   transition: {
-                    staggerChildren: .3,
+                    staggerChildren: .1,
                   },
                 },
               }}

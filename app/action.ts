@@ -15,7 +15,7 @@ export const generateListItems = async (moods: MoodsFetchingProps) => {
         platforms: z.array(z.object({
             name: z.string().describe("Represent the name of the platform"),
             link: z.string().describe("the link of this platform")
-        })).describe("Represent the platforms where this show is available"),
+        })).describe("Represent the all platforms where this show is available"),
         rating: z.number().describe("Represent the rating of this out of 5.")
     })
 
