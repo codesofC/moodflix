@@ -1,9 +1,9 @@
 import { MoodsFetchingProps } from "@/types";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { generateObject, generateText, streamText } from "ai";
+import { generateObject } from "ai";
 import { z } from "zod";
 
-
+//Call to AI API to get the shows based in the user's entries
 export const generateListItems = async (moods: MoodsFetchingProps) => {
     const google = createGoogleGenerativeAI({
         apiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
@@ -33,6 +33,7 @@ export const generateListItems = async (moods: MoodsFetchingProps) => {
     return result.object;
 }
 
+//Call API to get all data to complete the shows datas
 export const getShow = async (name: string) => {
     const res = await fetch(`https://www.omdbapi.com/?t=${name}&apikey=${process.env.NEXT_PUBLIC_OMBD_API_KEY}`)
 

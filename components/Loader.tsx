@@ -8,7 +8,7 @@ const Loader = () => {
 
   return (
     <div className="flex flex-col gap-1 items-center justify-center w-full mt-32 font-semibold text-secondary-foreground">
-      <div className="size-16">
+      <div className="size-14">
         <Image
           src={ALLMOODS[randomInt].url}
           alt="loading..."

@@ -8,7 +8,6 @@ import Modal from "./Modal";
 import { CardItemProps } from "@/types";
 import Link from "next/link";
 import { getPlatformLogo } from "@/constant";
-import { motion } from "framer-motion";
 
 const CardItem = (props: CardItemProps) => {
 
